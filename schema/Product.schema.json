@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "product_name": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "object",
+      "properties": {
+        "brand_name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "object",
+          "properties": {
+            "manufacturer_name": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "logo": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "mime_type": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "isParent": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "price_range": {
+      "type": "string"
+    },
+    "enable_varriants": {
+      "type": "boolean",
+      "default": false
+    },
+    "gallery": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "mime_type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "specification": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "",
+      "default": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "varriant_attribute": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "values": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "categories",
+    "product_name"
+  ],
+  "if": {
+    "properties": {
+      "enable_varriants": {
+        "const": true
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "varriant_attribute"
+    ]
+  },
+  "else": {
+    "properties": {
+      "varriant_attribute": false
+    }
+  }
+}
