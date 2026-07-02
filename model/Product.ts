@@ -88,10 +88,13 @@ const ProductSchema = new Schema(
       },
     ],
 
-    gallery: {
-      type: [MediaSchema],
-      default: [],
-    },
+    gallery: [
+      {
+        url: {
+          type : String,
+        }
+      }
+    ],
 
     specification: [
       {
