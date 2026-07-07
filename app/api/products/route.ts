@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { CreateProduct, connectDB , getAllProducts } from "@/lib/mongodb";
 import mongoose from "mongoose";
 import { ProductValidationSchema } from "@/schema/db_validation";
-import { Product } from "@/model/Product";
 
 export async function GET(request: Request) {
   await connectDB();

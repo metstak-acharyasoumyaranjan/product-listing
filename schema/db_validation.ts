@@ -63,9 +63,11 @@ export const ProductValidationSchema = z.object({
 
   enable_variants: z.boolean().default(false),
 
-  gallery: z
-    .array(MediaValidationSchema)
-    .default([]),
+  gallery: z.array(
+    z.object({
+      url: z.string("Invalid URL").optional(),
+    })
+  ).default([]),
 
   specification: z
     .array(

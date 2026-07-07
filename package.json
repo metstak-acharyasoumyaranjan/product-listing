@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
+    "@types/bcrypt": "^6.0.0",
+    "@vercel/blob": "^2.5.0",
+    "bcrypt": "^6.0.0",
     "mongodb": "^7.3.0",
     "mongoose": "^9.7.2",
     "mongoose-schema-jsonschema": "^4.0.1",

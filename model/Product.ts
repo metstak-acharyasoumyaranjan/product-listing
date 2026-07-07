@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { MediaSchema } from "./Media";
 import { generateSlug } from "@/lib/slugify";
 
 const ProductSchema = new Schema(

@@ -4,6 +4,8 @@ import { Category } from "@/model/Category";
 import { Brand } from "@/model/Brands";
 import { Manufacturer } from "@/model/Manufacturer";
 import { CategoryInput , ManufacturerInput , BrandInput } from "@/schema/db_validation";
+import { Users } from "@/model/Users";
+import { session } from "@/model/Session";
 
 export async function connectDB() {
     console.log("Connecting...");
@@ -123,4 +125,23 @@ export async function updateProductById(id: string , data : Object){
 
 export async function deleteProductById(id: string){
     return Product.findByIdAndDelete(id)
+}
+
+export async function getAllUsers(){
+    const users = await Users.find()
+    return users
+}
+
+export async function createUser(item : object){
+    const createdUser = await Users.create(item)
+    return createdUser
+}
+
+
+
+export async function createSession(user_id : string){
+    const sessionData = await session.create({
+        "user" : user_id
+    })
+    return sessionData
 }
